@@ -1,0 +1,1124 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Theme">
+
+    <!--Normal Button-->
+
+    <Style TargetType="Button"
+           x:Key="ButtonStyleNormal">
+        <Setter Property="SnapsToDevicePixels"
+          Value="true" />
+        <Setter Property="OverridesDefaultStyle"
+          Value="true" />
+        <Setter Property="FocusVisualStyle"
+          Value="{DynamicResource ButtonFocusVisual}" />
+        <Setter Property="MinHeight"
+          Value="23" />
+        <Setter Property="MinWidth"
+          Value="60" />
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border TextBlock.Foreground="White"
+                x:Name="Border"
+                CornerRadius="0"
+                BorderThickness="0.5">
+
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="0,0">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStopCollection>
+                                        <GradientStop Color="{DynamicResource BorderColor}"
+                                Offset="0.0" />
+                                        <GradientStop Color="{DynamicResource BorderColor}"
+                                Offset="0.0" />
+                                    </GradientStopCollection>
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0,0"
+                                 StartPoint="0,0">
+                                <GradientStop Color="{DynamicResource BtnColor1}"
+                            Offset="0" />
+                                <GradientStop Color="{DynamicResource BtnColor1}"
+                            Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5" />
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5"
+                                  To="Pressed" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource PrimaryColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource PrimaryColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource PrimaryColorLight}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="2"
+                                         Value="{DynamicResource BorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="2"
+                                         Value="{DynamicResource BorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource DisabledControlColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames
+                      Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource DisabledForegroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource DisabledBorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <ContentPresenter Margin="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefault"
+                   Value="true">
+
+                            <Setter TargetName="Border"
+                    Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="{DynamicResource BorderColor}"
+                                    Offset="0.0" />
+                                                <GradientStop Color="{DynamicResource BorderColor}"
+                                    Offset="1.0" />
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+
+                                </Setter.Value>
+                            </Setter>
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Scorecard Button-->
+
+    <Style TargetType="Button"
+           x:Key="ButtonStyleScoreCard">
+        <Setter Property="SnapsToDevicePixels"
+          Value="true" />
+        <Setter Property="OverridesDefaultStyle"
+          Value="true" />
+        <Setter Property="FocusVisualStyle"
+          Value="{DynamicResource ButtonFocusVisual}" />
+        <Setter Property="MinHeight"
+          Value="23" />
+        <Setter Property="MinWidth"
+          Value="60" />
+        <Setter  Property="FontWeight"
+                 Value="Bold"/>
+        <Setter Property="Foreground"
+                Value="Black"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border TextBlock.Foreground="{TemplateBinding Foreground}"
+                x:Name="Border"
+                CornerRadius="0"
+                BorderThickness="1.5">
+
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="0,0">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStopCollection>
+                                        <GradientStop Color="#FF0AF00A"
+                                Offset="0.0" />
+                                        <GradientStop Color="#FF0AF00A"
+                                Offset="0.0" />
+                                    </GradientStopCollection>
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0,0"
+                                 StartPoint="0,0">
+                                <GradientStop Color="{DynamicResource BackgroundLight}"
+                            Offset="0" />
+                                <GradientStop Color="{DynamicResource BackgroundLight}"
+                            Offset="0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5" />
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5"
+                                  To="Pressed" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource BtnScoreCardPress}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource BtnScoreCardPress}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0:0:0"
+                                         Value="{DynamicResource BackgroundLight}"/>
+                                            <EasingColorKeyFrame KeyTime="0:0:1"
+                                         Value="{DynamicResource BtnScoreCardPress}"/>
+                                            <EasingColorKeyFrame KeyTime="0:0:2"
+                                         Value="{DynamicResource BackgroundLight}"/>
+                                        </ColorAnimationUsingKeyFrames>
+
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="2"
+                                         Value="{DynamicResource BorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="2"
+                                         Value="{DynamicResource BorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                               
+
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                               <EasingColorKeyFrame KeyTime="0:0:0"
+                                         Value="{DynamicResource BackgroundLight}"/>
+                                            <!--<EasingColorKeyFrame KeyTime="0:0:1"
+                                         Value="{DynamicResource BtnScoreCardPress}"/>
+                                            <EasingColorKeyFrame KeyTime="0:0:2"
+                                         Value="{DynamicResource BackgroundLight}"/>-->
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames
+                      Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource DisabledForegroundColor2}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource BorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <ContentPresenter Margin="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefault"
+                   Value="true">
+
+                            <Setter TargetName="Border"
+                    Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="{DynamicResource BorderColor}"
+                                    Offset="0.0" />
+                                                <GradientStop Color="{DynamicResource BorderColor}"
+                                    Offset="1.0" />
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+
+                                </Setter.Value>
+                            </Setter>
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Scorecard Button No Click-->
+
+    <Style TargetType="Button"
+           x:Key="ButtonStyleScoreCardNC">
+        <Setter Property="SnapsToDevicePixels"
+          Value="true" />
+        <Setter Property="OverridesDefaultStyle"
+          Value="true" />
+        <Setter Property="FocusVisualStyle"
+          Value="{DynamicResource ButtonFocusVisual}" />
+        <Setter Property="MinHeight"
+          Value="23" />
+        <Setter Property="MinWidth"
+          Value="60" />
+        <Setter Property="Foreground"
+                Value="Black"/>
+        <Setter  Property="FontWeight"
+                 Value="Bold"/>
+        <Setter Property="Cursor" Value="Arrow"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border TextBlock.Foreground="{TemplateBinding Foreground}"
+                x:Name="Border"
+                CornerRadius="0"
+                BorderThickness="1">
+
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="0,0">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStopCollection>
+                                        <GradientStop Color="{DynamicResource BorderColor}"
+                                Offset="0.0" />
+                                        <GradientStop Color="{DynamicResource BorderColor}"
+                                Offset="0.0" />
+                                    </GradientStopCollection>
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0,0"
+                                 StartPoint="0,0">
+                                <GradientStop Color="{DynamicResource BackgroundLight}"
+                            Offset="0" />
+                                <GradientStop Color="{DynamicResource BackgroundLight}"
+                            Offset="0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5" />
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5"
+                                  To="Pressed" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+
+                                <!--<VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource PrimaryColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource PrimaryColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>-->
+
+                                <!--<VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource PrimaryColorLight}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="2"
+                                         Value="{DynamicResource BorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="2"
+                                         Value="{DynamicResource BorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>-->
+
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource DisabledControlColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames
+                      Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource DisabledForegroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource DisabledBorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <ContentPresenter Margin="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefault"
+                   Value="true">
+
+                            <Setter TargetName="Border"
+                    Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="{DynamicResource BorderColor}"
+                                    Offset="0.0" />
+                                                <GradientStop Color="{DynamicResource BorderColor}"
+                                    Offset="1.0" />
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+
+                                </Setter.Value>
+                            </Setter>
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Dices Button-->
+
+    <Style TargetType="Button"
+           x:Key="ButtonStyleDices">
+        <Setter Property="SnapsToDevicePixels"
+          Value="true" />
+        <Setter Property="OverridesDefaultStyle"
+          Value="true" />
+        <Setter Property="FocusVisualStyle"
+          Value="{DynamicResource ButtonFocusVisual}" />
+        <Setter  Property="FontWeight"
+                 Value="Bold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border TextBlock.Foreground="{TemplateBinding Foreground}"
+                x:Name="Border"
+                CornerRadius="0"
+                BorderThickness="0">
+
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="0,0" Opacity="0">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStopCollection>
+                                        <GradientStop Color="{DynamicResource BorderColor}"
+                                Offset="0.0" />
+                                        <GradientStop Color="{DynamicResource BorderColor}"
+                                Offset="0.0" />
+                                    </GradientStopCollection>
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0,0"
+                                 StartPoint="0,0"  Opacity="0">
+                                <GradientStop Color="{DynamicResource SecondaryColorLight}"
+                            Offset="0" />
+                                <GradientStop Color="{DynamicResource SecondaryColorLight}"
+                            Offset="0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5" />
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5"
+                                  To="Pressed" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+
+                                <!--<VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource PrimaryColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource PrimaryColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>-->
+
+                                <!--<VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource PrimaryColorLight}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="2"
+                                         Value="{DynamicResource BorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="2"
+                                         Value="{DynamicResource BorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>-->
+
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource DisabledControlColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames
+                      Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource DisabledForegroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource DisabledBorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <ContentPresenter Margin="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefault"
+                   Value="true">
+
+                            <Setter TargetName="Border"
+                    Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="{DynamicResource BorderColor}"
+                                    Offset="0.0" />
+                                                <GradientStop Color="{DynamicResource BorderColor}"
+                                    Offset="1.0" />
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+
+                                </Setter.Value>
+                            </Setter>
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Scorecard Button  Sums-->
+
+    <Style TargetType="Button"
+           x:Key="ButtonStyleScoreCardSums">
+        <Setter Property="SnapsToDevicePixels"
+          Value="true" />
+        <Setter Property="OverridesDefaultStyle"
+          Value="true" />
+        <Setter Property="FocusVisualStyle"
+          Value="{DynamicResource ButtonFocusVisual}" />
+        <Setter Property="MinHeight"
+          Value="23" />
+        <Setter Property="MinWidth"
+          Value="60" />
+        <Setter Property="Foreground"
+                Value="Black"/>
+        <Setter  Property="FontWeight"
+                 Value="Bold"/>
+        <Setter Property="Cursor" Value="Arrow"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border TextBlock.Foreground="{TemplateBinding Foreground}"
+                x:Name="Border"
+                CornerRadius="0"
+                BorderThickness="1">
+
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="0,0">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStopCollection>
+                                        <GradientStop Color="{DynamicResource BorderColor}"
+                                Offset="0.0" />
+                                        <GradientStop Color="{DynamicResource BorderColor}"
+                                Offset="0.0" />
+                                    </GradientStopCollection>
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0,0"
+                                 StartPoint="0,0">
+                                <GradientStop Color="{DynamicResource BackgroundGrey}"
+                            Offset="0" />
+                                <GradientStop Color="{DynamicResource BackgroundGrey}"
+                            Offset="0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5" />
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5"
+                                  To="Pressed" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+
+                                <!--<VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource PrimaryColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource PrimaryColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>-->
+
+                                <!--<VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="1"
+                                         Value="{DynamicResource PrimaryColorLight}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="2"
+                                         Value="{DynamicResource BorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="2"
+                                         Value="{DynamicResource BorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>-->
+
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource DisabledControlColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames
+                      Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource DisabledForegroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{DynamicResource DisabledBorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <ContentPresenter Margin="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefault"
+                   Value="true">
+
+                            <Setter TargetName="Border"
+                    Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="{DynamicResource BorderColor}"
+                                    Offset="0.0" />
+                                                <GradientStop Color="{DynamicResource BorderColor}"
+                                    Offset="1.0" />
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+
+                                </Setter.Value>
+                            </Setter>
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--visual style-->
+    <Style x:Key="ButtonFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle StrokeThickness="1"  
+          Stroke="Black"  
+          StrokeDashArray="1 2"  
+          SnapsToDevicePixels="true"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Menu Button-->
+
+    <!--<Style TargetType="Button"
+           x:Key="ButtonStyleMenu">
+        <Setter Property="SnapsToDevicePixels"
+          Value="true" />
+        <Setter Property="OverridesDefaultStyle"
+          Value="true" />
+        <Setter Property="FocusVisualStyle"
+          Value="{StaticResource ButtonFocusVisual}" />
+        <Setter Property="MinHeight"
+          Value="23" />
+        <Setter Property="MinWidth"
+          Value="60" />
+        <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border TextBlock.Foreground="{TemplateBinding Foreground}"
+                x:Name="Border"
+                CornerRadius="0"
+                BorderThickness="0">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="0,0">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStopCollection>
+                                        <GradientStop Color="{DynamicResource BorderBrush1}"
+                                Offset="0.0" />
+                                        <GradientStop Color="{DynamicResource BorderBrush2}"
+                                Offset="0.0" />
+                                    </GradientStopCollection>
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+
+                        </Border.BorderBrush>
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0,1"
+                                 StartPoint="0,0">
+                                <GradientStop Color="{DynamicResource BackgroundMenu1}"
+                            Offset="0" />
+                                <GradientStop Color="{DynamicResource BackgroundMenu2}"
+                            Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5" />
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5"
+                                  To="Pressed" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource MouseOverColor1}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource MouseOverColor1}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource MouseOverColor1}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource PressedBorderDarkColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource PressedBorderLightColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource DisabledControlDarkColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames
+                      Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource DisabledForegroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource DisabledBorderDarkColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <ContentPresenter Margin="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefault"
+                   Value="true">
+
+                            <Setter TargetName="Border"
+                    Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="{DynamicResource BorderBrush1}"
+                                    Offset="0.0" />
+                                                <GradientStop Color="{DynamicResource BorderBrush2}"
+                                    Offset="1.0" />
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+
+    <!--Invisible Menu Button-->
+
+    <!--<Style TargetType="Button"
+           x:Key="ButtonStyleInvisible">
+        <Setter Property="SnapsToDevicePixels"
+          Value="true" />
+        <Setter Property="OverridesDefaultStyle"
+          Value="true" />
+        <Setter Property="FocusVisualStyle"
+          Value="{StaticResource ButtonFocusVisual}" />
+        <Setter Property="MinHeight"
+          Value="23" />
+        <Setter Property="MinWidth"
+          Value="60" />
+        <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border TextBlock.Foreground="{TemplateBinding Foreground}"
+                x:Name="Border"
+                CornerRadius="0"
+                BorderThickness="0">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0"
+                                 EndPoint="0,0">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStopCollection>
+                                        <GradientStop Color="{DynamicResource BorderBrush1}"
+                                Offset="0.0" />
+                                        <GradientStop Color="{DynamicResource BorderBrush2}"
+                                Offset="0.0" />
+                                    </GradientStopCollection>
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+
+                        </Border.BorderBrush>
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0,1"
+                                 StartPoint="0,0">
+                                <GradientStop Color="{DynamicResource BackgroundWindowColor}"
+                            Offset="0" />
+                                <GradientStop Color="{DynamicResource BackgroundWindowColor}"
+                            Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5" />
+                                    <VisualTransition GeneratedDuration="0:0:0:0.5"
+                                  To="Pressed" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource InvisibleHover}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource InvisibleHover}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource MouseOverColor1}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource PressedBorderDarkColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource PressedBorderLightColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource DisabledControlDarkColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames
+                      Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource DisabledForegroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
+                      (GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                Storyboard.TargetName="Border">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource DisabledBorderDarkColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <ContentPresenter Margin="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefault"
+                   Value="true">
+
+                            <Setter TargetName="Border"
+                    Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="{DynamicResource BorderBrush1}"
+                                    Offset="0.0" />
+                                                <GradientStop Color="{DynamicResource BorderBrush2}"
+                                    Offset="1.0" />
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+
+</ResourceDictionary>

@@ -1,0 +1,352 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YatzyGrupp7MVVM.Views"
+        xmlns:Interactions="http://schemas.microsoft.com/xaml/behaviors" x:Class="YatzyGrupp7MVVM.Views.ScoreBoardView"
+        mc:Ignorable="d"
+        Title="ScoreBoardView" Style="{DynamicResource WindowStyle}"
+        >
+    <Window.Resources>
+        <Storyboard x:Key="Openpage">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="Soundmenu">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btnSoundMenu">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btnPlus">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btnMute">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btnMinus">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btnCollaps">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="SoundmenuCollaps">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btnSoundMenu">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btnPlus">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btnMute">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btnMinus">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btnCollaps">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.DataContext>
+        <Binding Path="LeaderBoardViewModel" Source="{StaticResource mainViewModelLocator}"/>
+    </Window.DataContext>
+    
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Openpage}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Openpage}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnSoundMenu">
+            <BeginStoryboard x:Name="Soundmenu_BeginStoryboard1" Storyboard="{StaticResource Soundmenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnCollaps">
+            <BeginStoryboard x:Name="SoundmenuCollaps_BeginStoryboard" Storyboard="{StaticResource SoundmenuCollaps}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Interactions:Interaction.Triggers>
+        <Interactions:EventTrigger EventName="Loaded">
+            <Interactions:CallMethodAction TargetObject="{Binding}" MethodName="LoadLeaderBoard"/>
+        </Interactions:EventTrigger>
+    </Interactions:Interaction.Triggers>
+    <Grid x:Name="grid" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="60"/>
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Row="0" Grid.Column="4" Panel.ZIndex="1" Grid.RowSpan="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Button x:Name="btnSoundMenu" Command="{Binding ClickCommandSoundMenu}" Style="{DynamicResource ButtonStyleDices}" Width="50" Height="50" Grid.Column="4" Grid.Row="0">
+                    <StackPanel>
+                        <Image Source="{Binding Sound_icon}"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnPlus" Command="{Binding ClickCommandPlus}" Style="{DynamicResource ButtonStyleDices}" Width="50" Height="50" Grid.Column="4" Grid.Row="1" Visibility="Hidden">
+                    <StackPanel>
+                        <Image Source="pack://application:,,,/Icons/SoundIcons/Increase.png"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnMute" Command="{Binding ClickCommand}" Style="{DynamicResource ButtonStyleDices}" Width="50" Height="50" Grid.Column="4" Grid.Row="2" Visibility="Hidden">
+                    <StackPanel>
+                        <Image Source="{Binding Sound_icon}"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnMinus" Command="{Binding ClickCommandMinus}" Style="{DynamicResource ButtonStyleDices}" Width="50" Height="50" Grid.Column="4" Grid.Row="3" Visibility="Hidden">
+                    <StackPanel>
+                        <Image Source="pack://application:,,,/Icons/SoundIcons/Decrease.png"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnCollaps" Command="{Binding ClickCommandCollaps}" Style="{DynamicResource ButtonStyleDices}" Width="50" Height="50" Grid.Column="4" Grid.Row="4" Visibility="Hidden">
+                    <StackPanel>
+                        <Image Source="pack://application:,,,/Icons/SoundIcons/up-arrow.png"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </StackPanel>
+
+        <MediaElement x:Name="myMediaElement" Grid.RowSpan="7" Grid.ColumnSpan="7" LoadedBehavior="Play"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Stretch="Fill">
+            <MediaElement.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+
+                            <MediaTimeline Source="Media\Videos\leaderboard.mp4" Storyboard.TargetName="myMediaElement"  
+                 RepeatBehavior="Forever" />
+
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </MediaElement.Triggers>
+        </MediaElement>
+
+        <Label x:Name="LblBestClass" Content="Högst totala poäng senaste 7 dagarna (Klassisk)" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="0" FontWeight="Bold" FontFamily="Impact" Foreground="White"/>
+        <DataGrid x:Name="BestPlayersClassic"
+                  AutoGenerateColumns="False"
+                  EnableColumnVirtualization="False"
+                  ItemsSource="{Binding PlayersOnScoreboardClassic}"
+                  RowDetailsVisibilityMode="Visible"
+                  HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Grid.Column="1" Grid.Row="1" Width="Auto" IsReadOnly="True" Foreground="White" AlternationCount="2">
+            <DataGrid.RowBackground>
+                <SolidColorBrush Color="Blue" Opacity="0"/>
+            </DataGrid.RowBackground>
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="rankColumnBestPlayersClassic"
+                                    Binding="{Binding Rank}"
+                                    Header="Plats"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="nickNameColumnBestPlayersClassic"
+                                    Binding="{Binding Nickname}"
+                                    Header="Nicknamn"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="firstNameColumnBestPlayersClassic"
+                                    Binding="{Binding Firstname}"
+                                    Header="Förnamn"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="lastNameColumnBestPlayersClassic"
+                                    Binding="{Binding Lastname}"
+                                    Header="Efternamn"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="totalScoreColumnBestPlayersClassic"
+                                    Binding="{Binding Total_score}"
+                                    Header="Totala poäng"
+                                    Width="SizeToHeader" />
+            </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Triggers>
+                        <Trigger Property="AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="Black" />
+                        </Trigger>
+                       
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+
+
+        <Label x:Name="LblBestControlled" Content="Högst totala poäng senaste 7 dagarna (Styrd)" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="2" FontWeight="Bold" Foreground="White"/>
+        <DataGrid x:Name="BestPlayersControlled"
+                  AutoGenerateColumns="False"
+                  EnableColumnVirtualization="True"
+                  ItemsSource="{Binding PlayersOnScoreboardControlled}"
+                  RowDetailsVisibilityMode="VisibleWhenSelected"
+                  HorizontalAlignment="Center" VerticalAlignment="Center" 
+                  Grid.Column="1" Grid.Row="3" Width="Auto" Height="Auto" IsReadOnly="True" Foreground="White" AlternationCount="2">
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="rankColumnBestPlayersControlled"
+                                    Binding="{Binding Rank}"
+                                    Header="Plats"
+                                    Width="SizeToHeader"
+                                    />
+                <DataGridTextColumn x:Name="nickNameColumnBestPlayersControlled"
+                                    Binding="{Binding Nickname}"
+                                    Header="Nicknamn"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="firstNameColumnBestPlayersControlled"
+                                    Binding="{Binding Firstname}"
+                                    Header="Förnamn"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="lastNameColumnBestPlayersControlled"
+                                    Binding="{Binding Lastname}"
+                                    Header="Efternamn"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="totalScoreColumnBestPlayersControlled"
+                                    Binding="{Binding Total_score}"
+                                    Header="Totala poäng"
+                                    Width="SizeToHeader" />
+            </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Triggers>
+                        <Trigger Property="AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="Black" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+
+
+        <Label x:Name="LblMostPlayed" Content="Flest matcher" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="3" Grid.Row="0" FontWeight="Bold" Foreground="White"/>
+        <DataGrid x:Name="mostPlayed"
+                  AutoGenerateColumns="False"
+                  EnableColumnVirtualization="True"
+                  ItemsSource="{Binding PlayersOnScoreboardMostPlayed}"
+                  RowDetailsVisibilityMode="VisibleWhenSelected"
+                  HorizontalAlignment="Center" VerticalAlignment="Center" 
+                  Grid.Column="3" Grid.Row="1" Width="Auto" IsReadOnly="True" Foreground="White" AlternationCount="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="rankColumnMostPlayed"
+                                    Binding="{Binding Rank}"
+                                    Header="Plats"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="nickNameColumnMostPlayed"
+                                    Binding="{Binding Nickname}"
+                                    Header="Nicknamn"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="firstNameColumnMostPlayed"
+                                    Binding="{Binding Firstname}"
+                                    Header="Förnamn"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="lastNameColumnMostPlayed"
+                                    Binding="{Binding Lastname}"
+                                    Header="Efternamn"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="TotalgamesColumnMostPlayed"
+                                    Binding="{Binding Total_games}"
+                                    Header="Totala matcher"
+                                    Width="SizeToHeader" />
+            </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Triggers>
+                        <Trigger Property="AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="Black" />
+                        </Trigger>
+                        
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+
+
+        <Label x:Name="LblBestMostWins" Content="Flest vinster" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="3" Grid.Row="2" FontWeight="Bold" Foreground="White"/>
+        <DataGrid x:Name="mostWon"
+                  AutoGenerateColumns="False"
+                  EnableColumnVirtualization="True"
+                  ItemsSource="{Binding PlayersOnScoreboardMostWins}"
+                  RowDetailsVisibilityMode="VisibleWhenSelected"
+                  HorizontalAlignment="Center" VerticalAlignment="Center" 
+                  Grid.Column="3" Grid.Row="3" Width="Auto" IsReadOnly="True" Foreground="White" AlternationCount="2">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="rankColumnMostWon"
+                                    Binding="{Binding Rank}"
+                                    Header="Plats"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="nickNameColumnMostWon"
+                                    Binding="{Binding Nickname}"
+                                    Header="Nicknamn"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="firstNameColumnMostWon"
+                                    Binding="{Binding Firstname}"
+                                    Header="Förnamn"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="lastNameColumnMostWon"
+                                    Binding="{Binding Lastname}"
+                                    Header="Efternamn"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="TotalWinsColumnMostWon"
+                                    Binding="{Binding Total_wins}"
+                                    Header="Totala vinster"
+                                    Width="SizeToHeader" />
+
+            </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Triggers>
+                        <Trigger Property="AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="Black" />
+                        </Trigger>
+                    
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+
+        <Button x:Name="btnPlay" Command="{Binding ClickCommandWindowPlay}" Content="Tillbaka" HorizontalAlignment="Center" VerticalAlignment="Center" Width="248" Height="88" FontSize="22" Grid.Column="2" Grid.Row="2" BorderBrush="#FF00D9FB" >
+            <Button.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF89096C"/>
+                    <GradientStop Color="#FFFF0FC9" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Foreground>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF125050" Offset="0"/>
+                    <GradientStop Color="#FF5CFFFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>
